@@ -23,7 +23,7 @@
 					<td>{{$item->id}}</td>
 					<td>{{$item->codeno}}
 						<a href="{{route('items.show',$item->id)}}">
-							<span class="badge badge-primary ml-2"><i class='fas fa-eye'></i></span>
+							<span class="badge badge-primary ml-2">More...</span>
 						</a>
 
 						<a href="#" class="detailBtn" data-photo="{{asset($item->photo)}}" data-name="{{$item->name}}" data-codeno="{{$item->codeno}}" data-price="{{$item->price}}" data-description="{{$item->description}}"><span class="badge badge-primary ml-2"><i class='fas fa-eye'></i></span></a>
@@ -33,10 +33,10 @@
 					<td>{{$item->price}}</td>
 					<td>
 						<a href="{{route('items.edit',$item->id)}}" class="btn btn-warning"><i class='fas fa-edit'></i></a>
-						<form method="post" action="{{route('items.destroy',$item->id)}}" class="d-inline-block deleteform">
+						<form method="post" action="{{route('items.destroy',$item->id)}}" class="d-inline-block" onsubmit="return confirm('Are you sure to delete?')">
 							@csrf
 							@method('DELETE')
-							<button type="button" name="btn-submit" class="btn btn-danger btn-delete"><i class='fas fa-trash'></i></button>
+							<button type="submit" name="btn-submit" class="btn btn-danger btn-delete"><i class='fas fa-trash'></i></button>
 						</form> 
 					</td>
 				</tr>

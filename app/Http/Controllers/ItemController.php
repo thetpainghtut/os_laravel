@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\File;
 use App\Item;
 use App\Brand;
 use App\Subcategory;
+use Alert;
 
 class ItemController extends Controller
 {
@@ -76,11 +77,10 @@ class ItemController extends Controller
 
         $item->save();
 
-
-        $status = 1;
         // Redirect
-        return redirect()->route('items.index',compact('status'));
+        Alert::success('Success!', 'New Item Inserted Successfully.');
 
+        return redirect()->route('items.index');
     }
 
     /**
@@ -170,10 +170,10 @@ class ItemController extends Controller
 
         $item->save();
 
-        $status = 2;
-
         // Redirect
-        return redirect()->route('items.index',compact('status'));
+        Alert::success('Success!', 'Item Updated Successfully.');
+
+        return redirect()->route('items.index');
     }
 
     /**
@@ -194,7 +194,8 @@ class ItemController extends Controller
 
         $item->delete();
 
-        $status = 3;
-        return redirect()->route('items.index',compact('status'));
+        Alert::success('Success!', 'Item('.$item->codeno.') Deleted Successfully.');
+        
+        return redirect()->route('items.index');
     }
 }

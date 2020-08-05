@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Subcategory;
+use Alert;
 
 class SubcategoryController extends Controller
 {
@@ -54,10 +55,10 @@ class SubcategoryController extends Controller
 
         $subcategory->save();
 
-
-        $status = 1;
         // Redirect
-        return redirect()->route('subcategories.index',compact('status'));
+        Alert::success('Success!', 'New Subcategory Inserted Successfully.');
+
+        return redirect()->route('subcategories.index');
     }
 
     /**
@@ -113,10 +114,10 @@ class SubcategoryController extends Controller
 
         $subcategory->save();
 
-        $status = 2;
-
         // Redirect
-        return redirect()->route('subcategories.index',compact('status'));
+        Alert::success('Success!', 'Subcategory Updated Successfully.');
+
+        return redirect()->route('subcategories.index');
     }
 
     /**
@@ -131,7 +132,8 @@ class SubcategoryController extends Controller
 
         $subcategory->delete();
 
-        $status = 3;
+        Alert::success('Success!', 'Subcategory Deleted Successfully.');
+        
         return redirect()->route('subcategories.index',compact('status'));
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File; 
 use App\Category;
+use Alert;
 
 class CategoryController extends Controller
 {
@@ -56,10 +57,10 @@ class CategoryController extends Controller
 
         $category->save();
 
-
-        $status = 1;
         // Redirect
-        return redirect()->route('categories.index',compact('status'));
+        Alert::success('Success!', 'New Category Inserted Successfully.');
+
+        return redirect()->route('categories.index');
 
     }
 
@@ -131,10 +132,10 @@ class CategoryController extends Controller
 
         $category->save();
 
-        $status = 2;
-
         // Redirect
-        return redirect()->route('categories.index',compact('status'));
+        Alert::success('Success!', 'Category Updated Successfully.');
+
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -149,7 +150,8 @@ class CategoryController extends Controller
 
         $category->delete();
 
-        $status = 3;
-        return redirect()->route('categories.index',compact('status'));
+        Alert::success('Success!', 'Category Deleted Successfully.');
+        
+        return redirect()->route('categories.index');
     }
 }

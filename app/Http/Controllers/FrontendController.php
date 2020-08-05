@@ -10,7 +10,7 @@ class FrontendController extends Controller
 {
     public function home($value='')
     {
-    	$items = Item::orderBy('id','desc')->take(3)->get();
+    	$items = Item::orderBy('id','desc')->take(4)->get();
     	return view('frontend.home',compact('items'));
     }
 

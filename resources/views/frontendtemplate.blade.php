@@ -44,7 +44,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('cart')}}">
               <i class="fas fa-cart-plus"></i>
-              <span class="badge badge-pill bg-white text-danger">0</span>
+              <span class="badge badge-pill bg-white text-danger noti-show"></span>
             </a>
           </li>
         </ul>

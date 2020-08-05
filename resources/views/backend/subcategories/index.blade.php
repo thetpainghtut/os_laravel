@@ -29,10 +29,10 @@
 					<td>{{$subcategory->name}}</td>
 					<td>
 						<a href="{{route('subcategories.edit',$subcategory->id)}}" class="btn btn-warning"><i class='fas fa-edit'></i></a>
-						<form method="post" action="{{route('subcategories.destroy',$subcategory->id)}}" class="d-inline-block deleteform">
+						<form method="post" action="{{route('subcategories.destroy',$subcategory->id)}}" class="d-inline-block" onsubmit="return confirm('Are you sure to delete?')">
 							@csrf
 							@method('DELETE')
-							<button type="button" name="btn-submit" class="btn btn-danger btn-delete"><i class='fas fa-trash'></i></button>
+							<button type="submit" name="btn-submit" class="btn btn-danger btn-delete"><i class='fas fa-trash'></i></button>
 						</form>
 					</td>
 				</tr>

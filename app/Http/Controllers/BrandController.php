@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File; 
 use App\Brand;
+use Alert;
 
 class BrandController extends Controller
 {
@@ -56,10 +57,10 @@ class BrandController extends Controller
 
         $brand->save();
 
-
-        $status = 1;
         // Redirect
-        return redirect()->route('brands.index',compact('status'));
+        Alert::success('Success!', 'New Brand Inserted Successfully.');
+
+        return redirect()->route('brands.index');
 
     }
 
@@ -131,10 +132,10 @@ class BrandController extends Controller
 
         $brand->save();
 
-        $status = 2;
-
         // Redirect
-        return redirect()->route('brands.index',compact('status'));
+        Alert::success('Success!', 'Brand Updated Successfully.');
+
+        return redirect()->route('brands.index');
     }
 
     /**
@@ -149,7 +150,8 @@ class BrandController extends Controller
 
         $brand->delete();
 
-        $status = 3;
-        return redirect()->route('brands.index',compact('status'));
+        Alert::success('Success!', 'Brand Deleted Successfully.');
+        
+        return redirect()->route('brands.index');
     }
 }

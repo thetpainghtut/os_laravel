@@ -16,7 +16,7 @@
 				<p><strong>{{$item->name}}</strong></p>
 				<p>Price: {{$item->price}} MMK</p>
 
-				<a href="#" class="btn btn-success">Add To Cart</a>
+				<a href="#" class="btn btn-success addtocart" data-id="{{$item->id}}" data-photo="{{asset($item->photo)}}" data-name="{{$item->name}}" data-price="{{$item->price}}">Add To Cart</a>
 			</div>
 		</div>
 	</div>

@@ -34,13 +34,13 @@
 			<div class="col-md-3 mb-5">
 				<div class="card h-100">
 					<div class="card-body">
-						<h2 class="card-title">{{$item->name}}</h2>
-						<img src="{{asset($item->photo)}}" class="img-fluid w-50">
-						<p class="card-text">Price: {{$item->price}} MMK</p>
+						<h4 class="card-title mb-3">{{$item->name}}</h4>
+						<img src="{{asset($item->photo)}}" class="img-fluid w-50 mx-auto d-block">
+						<p class="card-text mt-3">Price: {{$item->price}} MMK</p>
 					</div>
 					<div class="card-footer">
 						<a href="{{route('itemdetail',$item->id)}}" class="btn btn-primary btn-sm">More Info</a>
-						<a href="#" class="btn btn-info btn-sm">Add To Cart</a>
+						<a href="#" class="btn btn-info btn-sm addtocart" data-id="{{$item->id}}" data-photo="{{asset($item->photo)}}" data-name="{{$item->name}}" data-price="{{$item->price}}">Add To Cart</a>
 					</div>
 				</div>
 			</div>
@@ -52,4 +52,8 @@
 	</div>
 
 
+@endsection
+
+@section('script')
+	<script type="text/javascript" src="{{asset('frontendtemplate/js/custom.js')}}"></script>
 @endsection
