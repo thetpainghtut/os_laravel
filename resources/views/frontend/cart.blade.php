@@ -27,6 +27,8 @@
 				</tr>
 			</tbody>
 		</table>
+
+		<a href="#" class="btn btn-success checkout">Checkout</a>
 	</div>
 @endsection
 
