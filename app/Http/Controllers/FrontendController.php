@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Item;
 use App\Order;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
+    public function __construct($value='')
+    {
+        $this->middleware('auth')->only('checkout');
+    }
+
     public function home($value='')
     {
     	$items = Item::orderBy('id','desc')->take(4)->get();
@@ -29,7 +35,8 @@ class FrontendController extends Controller
     public function checkout(Request $request)
     {
         $arr = json_decode($request->data);
-        $list = $arr->product_list;
+        // $list = $arr->product_list;
+        $list = $arr;
 
         $total = 0;
         foreach($list as $row){
@@ -43,7 +50,7 @@ class FrontendController extends Controller
         $order->total = $total;
         $order->note= 'Note Here';
         $order->status = 0;
-        $order->user_id = 1; // auth id
+        $order->user_id =Auth::id(); // auth id
 
         $order->save();
 

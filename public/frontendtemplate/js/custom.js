@@ -146,8 +146,8 @@ $(function() {
 
 	// Checkout
 	$('.checkout').click(function () {
-		// alert('ok');
-		var loStr = localStorage.getItem('cart');
+		alert('ok');
+		var loStr = localStorage.getItem('items');
 		if (loStr) {
 			$.post("/checkout",{data:loStr},function (res) {
 				console.log(res);

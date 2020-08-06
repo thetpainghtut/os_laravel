@@ -27,9 +27,15 @@
 		
 		<div class="row mb-3">
 			<div class="col-md-12 cart-process">
-				<a href="{{route('home')}}" class="btn btn-success float-left">Continue Shopping</a>
-
-				<a href="#" class="btn btn-info checkout float-right">Login to Checkout</a>
+				<a href="{{route('homepage')}}" class="btn btn-success float-left">Continue Shopping</a>
+				@role('customer')
+					<a href="#" class="btn btn-info checkout float-right">Checkout</a>
+				@else
+					<form method="post" action="{{route('checkout')}}" class="checkout-form">
+						@csrf
+					</form>
+					<a href="#" class="btn btn-info float-right lotcheckout">Login to Checkout</a>
+				@endrole
 			</div>
 		</div>
 	</div>
@@ -37,4 +43,11 @@
 
 @section('script')
 	<script type="text/javascript" src="{{asset('frontendtemplate/js/custom.js')}}"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('.lotcheckout').click(function () {
+				$('.checkout-form').submit();
+			})
+		})
+	</script>
 @endsection

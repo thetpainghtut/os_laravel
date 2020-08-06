@@ -13,24 +13,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 // php artisan make:controller FrontendController //----> create controller
 
-Route::get('/', 'FrontendController@home')->name('home');
+Route::get('/', 'FrontendController@home')->name('homepage');
 
 Route::get('itemdetail/{item}', 'FrontendController@itemdetail')->name('itemdetail');
 
 Route::get('cart', 'FrontendController@cart')->name('cart');
 
-Route::post('checkout','FrontendController@checkout')->name('checkout'); 
+Route::group(['middleware' => ['role:customer']], function () {
+	Route::post('checkout','FrontendController@checkout')->name('checkout'); 
+});
 
-Route::get('dashboard', 'BackendController@dashboard')->name('dashboard');
+// route group // middleware
+Route::middleware(['auth','role:admin'])->group(function () {
 
-Route::resource('items', 'ItemController'); // resource ဆိုရင် @method ထည့်ပေးစရာမလိုဖူး
+	Route::get('dashboard', 'BackendController@dashboard')->name('dashboard');
 
-Route::resource('brands', 'BrandController');
+	Route::resource('items', 'ItemController'); // resource ဆိုရင် @method ထည့်ပေးစရာမလိုဖူး
 
-Route::resource('categories', 'CategoryController');
+	Route::resource('brands', 'BrandController');
 
-Route::resource('subcategories', 'SubcategoryController');
+	Route::resource('categories', 'CategoryController');
+
+	Route::resource('subcategories', 'SubcategoryController');
+
+	Route::resource('orders','OrderController');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
