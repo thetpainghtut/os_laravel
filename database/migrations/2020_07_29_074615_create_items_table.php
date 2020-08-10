@@ -33,6 +33,7 @@ class CreateItemsTable extends Migration
                   ->references('id')->on('brands')
                   ->onDelete('cascade'); 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

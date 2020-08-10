@@ -1,11 +1,15 @@
-@extends('layouts.app')
+@extends('frontendtemplate')
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row my-5">
+        <div class="col-md-6 text-center">
+            <img src="{{asset('frontendtemplate/images/online_shopping.png')}}" class="img-fluid w-75">
+            <p><strong>Happiness</strong> is not in money, but in <strong>shopping</strong>!</p>
+        </div>
+        <div class="col-md-6">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('Customer Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">

@@ -3,15 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Brand extends Model
 {
-     protected $fillable = [
-        'name', 'photo',
-    ];
+  use SoftDeletes;
+  
+  protected $fillable = [
+    'name', 'photo',
+  ];
 
-    public function items($value='')
-    {
-    	# code...
-    }
+  public function items($value='')
+  {
+  	# code...
+  }
 }

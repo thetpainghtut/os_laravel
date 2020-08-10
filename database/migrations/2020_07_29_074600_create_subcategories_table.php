@@ -22,7 +22,7 @@ class CreateSubcategoriesTable extends Migration
                   ->references('id')->on('categories')
                   ->onDelete('cascade'); // relationship ချိတ်ဆက်ပုံ 
 
-
+            $table->softDeletes();
         });
     }
 
