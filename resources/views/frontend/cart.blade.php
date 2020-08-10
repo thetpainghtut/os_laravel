@@ -48,6 +48,19 @@
 			$('.lotcheckout').click(function () {
 				$('.checkout-form').submit();
 			})
+
+			// Checkout
+			$('.checkout').click(function () {
+				// alert('ok');
+				var loStr = localStorage.getItem('items');
+				if (loStr) {
+					$.post("{{route('checkout')}}",{data:loStr},function (res) {
+						console.log(res);
+					})
+					localStorage.clear();
+					window.location.href="/";
+				}
+			})
 		})
 	</script>
 @endsection

@@ -143,17 +143,4 @@ $(function() {
   }
 
 // --------------------------------------------------- localStorage
-
-	// Checkout
-	$('.checkout').click(function () {
-		alert('ok');
-		var loStr = localStorage.getItem('items');
-		if (loStr) {
-			$.post("/checkout",{data:loStr},function (res) {
-				console.log(res);
-			})
-			localStorage.clear();
-			window.location.href="/";
-		}
-	})
 });
